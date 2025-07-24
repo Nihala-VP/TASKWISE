@@ -25,5 +25,7 @@ urlpatterns = [
     path("register/",views.SignUpView.as_view(),name="register"),
 
     path("signin/",views.SignInView.as_view(),name="signin"),
-    
+
+    path("todos/add/",views.TodoCreateView.as_view(),name="todo-create")
+
 ]

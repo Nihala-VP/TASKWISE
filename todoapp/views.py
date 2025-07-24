@@ -2,11 +2,13 @@ from django.shortcuts import render,redirect
 
 from django.views.generic import View
 
-from todoapp.forms import RegistrationForm,LoginForm
+from todoapp.forms import RegistrationForm,LoginForm,TodoForm
 
 from django.contrib.auth.models import User
 
 from django.contrib.auth import authenticate,login,logout
+
+from todoapp.models import Todo
 
 
 class SignUpView(View):
@@ -75,10 +77,41 @@ class SignInView(View):
 
                 login(request,user_object)
 
-                return redirect("signin")
+                return redirect("todo-create")
             
         return render(request,self.template_name,{"form":form_instance})
 
 
 
+
+class TodoCreateView(View):
+
+    template_name = "todo-create.html"
+
+    form_class = TodoForm
+
+
+    def get(self,request,*args,**kwargs):
+
+        form_instance = self.form_class()
+
+        return render(request,self.template_name,{"form":form_instance})
+    
+    def post(self,request,*args,**kwargs):
+
+        form_data = request.POST
+
+        form_instance = self.form_class(form_data)
+
+        if form_instance.is_valid():
+
+            validated_data = form_instance.cleaned_data
+
+            Todo.objects.create(**validated_data,owner=request.user)
+
+            return redirect("todo-create")
+        
+        else:
+
+            return render(request,self.template_name,{"form":form_instance})
     

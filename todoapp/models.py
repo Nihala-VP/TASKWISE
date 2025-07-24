@@ -23,7 +23,7 @@ class Todo(models.Model):
         ("completed","completed")
     )
 
-    status = models.CharField(max_length=200,default="pending")
+    status = models.CharField(max_length=200,choices=STATUS_CHOICES,default="pending")
 
     owner = models.ForeignKey(User,on_delete=models.CASCADE)
 
