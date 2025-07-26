@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+       <h1>Todo List</h1>
+    {%for t in data%}
+  
+    <div class="container">
+
+       
+      <p>ID:{{t.id}}</p>
+      <p>title:{{t.title}}</p>
+      <p>priority:{{t.priority}}</p>
+      <p>Status:{{t.status}}</p>
+      <p><a href="{%url 'todo-remove' t.id%}">Remove</a></p>
+      <p><a href="{%url 'todo-update' t.id%}">Update</a></p>
+      <hr>
+      
+
+
+    </div>
+
+    {%endfor%}
+</body>
+</html>

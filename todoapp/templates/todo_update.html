@@ -1,25 +1,21 @@
 <!DOCTYPE html>
-{%load static%}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <link rel="stylesheet" href="{%static 'css/style.css'%}">
 </head>
 <body>
-    
-
-    <h1>Regsiter</h1>
+    <h1>Todo Update</h1>
 
     <form action="" method="post">
+
 
         {%csrf_token%}
 
         {{form}}
-        <button type="submit">login</button>
 
+        <button type="submit">Update</button>
     </form>
 </body>
 </html>

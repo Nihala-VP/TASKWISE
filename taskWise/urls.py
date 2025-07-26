@@ -26,6 +26,12 @@ urlpatterns = [
 
     path("signin/",views.SignInView.as_view(),name="signin"),
 
-    path("todos/add/",views.TodoCreateView.as_view(),name="todo-create")
+    path("todos/add/",views.TodoCreateView.as_view(),name="todo-create"),
+
+    path('todo/list/',views.TodoListView.as_view(),name="todo-list"),
+
+    path('todo/<int:pk>/remove/',views.TodoDeleteView.as_view(),name="todo-remove"),
+
+    path('todo/<int:pk>/update/',views.TodoUpdateView.as_view(),name="todo-update"),
 
 ]
